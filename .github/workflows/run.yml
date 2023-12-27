@@ -1,20 +1,29 @@
-modules:
-  - "nodejs-20:v8-20230920-bd784b9"
-hidden:
-  - ".config"
-  - "package-lock.json"
-run: "npm run start"
+# This workflow will do a clean installation of node dependekncies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-nix:
-  channel: "stable-23_05"
+name: Node.js CI
 
-unitTest:
-  language: "nodejs"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-deployment:
-  run:
-    - "sh"
-    - "-c"
-    - "npm start"
-  deploymentTarget: "cloudrun"
-  ignorePorts: false
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.17.0]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm run
