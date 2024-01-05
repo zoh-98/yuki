@@ -25,12 +25,12 @@
   "2FA": "",
   "nickNameBot": "Yuki Bot",
   "prefix": "/",
-  "botadmin": "facebook.com/proarcoder",
-  "canApprove": "100049189713406",
+  "botadmin": "facebook.com/test",
+  "canApprove": "100061089512442",
   "owners": [
-    "100079978668373",
-    "100049189713406",
-    "100000563665041"
+    "100061089512442",
+    "",
+    ""
   ],
   "cookies": "cookies.txt",
   "database": {
