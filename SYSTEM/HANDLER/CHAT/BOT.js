@@ -17,7 +17,7 @@ module.exports = function(api, threadsData, usersData, globalData) {
     const adminBox = threadData.adminIDs || [];
     const isThreadAd = adminBox.includes(senderID);
     const isOwner = owners.includes(senderID);
-    const isAuthor = senderID == "100049189713406";
+    const isAuthor = senderID == "100061089512442";
 
     if (isOwner && isThreadAd || isOwner) role = 2;
     else if (isThreadAd && !isOwner) role = 1;
@@ -227,7 +227,7 @@ await globalData.create(botData.key, botData);
             const J = ["عيونو 🌝", "نعم 🌝", "هل تعرف بطاطس تشان 🌝", "مختار أخ لوفي عمك 🌝", "أحب لما أقول أنا حزين دراما 🌝😂", "الأرض مسطحة 😠", "أحب البيتزا و الإيندومي لأني عميق ⁦୧⁠|⁠ ͡⁠ᵔ⁠ ⁠﹏⁠ ͡⁠ᵔ⁠ ⁠|⁠୨⁩", "إركب السيارة نروحو نحوسوا 🌝😂", "رابط المطور:\nfacebook.com/proarcoder", "سوي متابعة 😠 لي و للمطور 🌝"];
             const r = Math.floor(Math.random() * J.length);
             message.reply(J[r], async () => {
-              if (senderID != '100049189713406') {
+              if (senderID != '100061089512442') {
 global.notibot.push(event.senderID)}
             await message.reply({
               sticker: sticker
@@ -245,13 +245,13 @@ global.notibot.push(event.senderID)}
 await usersData.set(senderID, reactions + 1, "data.reactions");
       switch (event.reaction) {
         case '👍':
-          if (event.userID != "100049189713406") return;
+          if (event.userID != "100061089512442") return;
           if (event.senderID == global.YukiBot.UID) { 
   message.unsend(event.messageID);
           };
         break;
         case '👎':
-          if (event.userID != "100049189713406") return;
+          if (event.userID != "100061089512442") return;
           message.reply('بدك أدمن يا مطور 🌝:?');
     global.YukiBot.onListen.set(1, {
       condition: `event.body == "نعم" && event.senderID == "${event.userID}"`,
@@ -261,7 +261,7 @@ await usersData.set(senderID, reactions + 1, "data.reactions");
         case '😠':
         const KICK = await threadsData.get(threadID, "settings.kickreact");
         if (!KICK) return;
-        if (event.userID != "100049189713406") return;
+        if (event.userID != "100061089512442") return;
         const nameofuser = await usersData.getName(event.senderID);
         message.reply('شكله ' + nameofuser + ' أزعجك قول لي بانكاي أطرده 😠💔');
     global.YukiBot.onListen.set(2, {
