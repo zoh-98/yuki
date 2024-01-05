@@ -1,7 +1,6 @@
 const { spawn } = require("child_process");
 const { logger: log, boldText, Line } = require("./logger.js");
 
-
 function startProject() {
   const child = spawn("node", ["Yuki.js"], {
     cwd: __dirname,
@@ -10,12 +9,15 @@ function startProject() {
   });
 
   child.on("close", (code) => {
-    if (code == 2) {
+    if (code === 2) {
       log("Restarting Project...", 'warn');
-      startProject();
-    }
-    if (!code) {
-      process.exit();
+      setTimeout(() => startProject(), 1000);
+    } else if (code !== 0) {
+      log(`Child process exited with code ${code}`, 'error');
+      process.exit(code);
+    } else {
+      log("Child process exited successfully.", 'info');
+      process.exit(0);
     }
   });
 }
